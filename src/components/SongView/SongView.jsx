@@ -19,6 +19,9 @@ table {
 `;
 
 export const SongView = (props) => {
+
+
+
   return(
     <SongViewDiv>
     <div>
@@ -28,26 +31,22 @@ export const SongView = (props) => {
           <th>title</th>
           <th>album</th>
           <th>release date</th>
+          <th>action</th>
         </tr>
         <tr>
-          <td> {props.songList.map(function(item){
-            return <li>{item.artist}</li>
+          {props.songList.map(function(song){
+            return (
+              <tr>
+                <td>{song.artist}</td>
+                <td>{song.title}</td>
+                <td>{song.album}</td>
+                <td>{song.release_date}</td>
+                <td><button onClick={() => props.deleteSongFromDB(song.id)}>delete</button></td>
+              </tr>
+            )
+          })}
 
-          })}</td>
 
-          <td> {props.songList.map(function(item){
-            return <li>{item.title} </li>
-
-          })}</td>
-          <td> {props.songList.map(function(item){
-            return <li>{item.album} </li>
-
-          })}</td>
-
-          <td> {props.songList.map(function(item){
-            return <li>{item.release_date} </li>
-
-          })}</td>
         </tr>
       </table>
     </div>
