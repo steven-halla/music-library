@@ -31,6 +31,7 @@ export const SongView = (props) => {
             <th>artist</th>
             <th>title</th>
             <th>album</th>
+            <th>genre</th>
             <th>release date</th>
             <th>action</th>
           </tr>
@@ -42,6 +43,7 @@ export const SongView = (props) => {
                 <td>{song.artist}</td>
                 <td>{song.title}</td>
                 <td>{song.album}</td>
+                <td>{song.genre}</td>
                 <td>{song.release_date}</td>
                 <td>
                   <button onClick={() => props.deleteSongFromDB(song.id)}>delete</button>
