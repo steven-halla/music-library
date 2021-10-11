@@ -63,8 +63,8 @@ export class App extends Component {
 
 
 
-    return this.isFieldMatch(song.title, query)
-      || this.isFieldMatch(song.artist, query)
+    return this.isFieldMatch(song.artist, query)
+      || this.isFieldMatch(song.title, query)
       || this.isFieldMatch(song.album, query)
       || this.isFieldMatch(song.genre, query)
       || song.release_date === query;
@@ -98,7 +98,8 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello moto</h1>
+        <h1>Song Search</h1>
+        <p>Search by Release Date needs to match DataBase</p>
         <SearchBar searchSong={this.searchSong}/>
         <br/>
         <SongView songList={this.state.filteredSongs} deleteSongFromDB={this.songDelete}/>
