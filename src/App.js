@@ -37,6 +37,8 @@ export class App extends Component {
     console.log("song is trying to delete");
     try {
       await axios.delete('http://127.0.0.1:8000/music/' + songId + '/');
+      await this.fetchSongs()
+
     } catch (ex) {
       console.log('Error in DELeTE Call', ex);
     }
@@ -45,7 +47,9 @@ export class App extends Component {
   createSong = async () => {
     console.log("attempting to create song")
     try {
-      await axios.post('http://127.0.0.1:8000/music/')
+      await axios.post('http://127.0.0.1:8000/music/');
+      await this.fetchSongs()
+
     } catch (ex) {
       console.log("error in create call", ex);
     }
