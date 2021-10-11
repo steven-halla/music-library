@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 import axios from "axios";
 import {SongView} from "./components/SongView/SongView";
+import {CreateSongForm} from "./components/CreateSongView/CreateSongForm";
+
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
 
-    state = {
+    this.state = {
       songs: []
-    }
+    };
+  }
+
+
 
     componentDidMount() {
       this.makeGetRequest()
@@ -35,11 +42,21 @@ export class App extends Component {
       }
     }
 
+    createSong = async () => {
+    console.log("attempting to create song")
+    try{
+      await axios.post('http://127.0.0.1:8000/music/')
+    }catch(ex){
+      console.log("error in create call", ex)
+      }
+    }
+
   render() {
   return(
     <div>
       <h1>Hello moto</h1>
       <SongView songList={this.state.songs} deleteSongFromDB={this.songDelete}/>
+      <CreateSongForm createNewSong={this.createSong}/>
     </div>
     );
   }

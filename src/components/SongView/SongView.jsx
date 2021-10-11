@@ -18,6 +18,8 @@ table {
   }
 `;
 
+
+
 export const SongView = (props) => {
 
 
@@ -45,8 +47,6 @@ export const SongView = (props) => {
               </tr>
             )
           })}
-
-
         </tr>
       </table>
     </div>
