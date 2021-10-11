@@ -54,7 +54,6 @@ export class CreateSongForm extends Component {
           <label htmlFor="">release date</label>
           <input name="release_date" onChange={this.handleChange} type="text"/><br/>
           <button type="submit">Create Song</button>
-
         </form>
       </div>
     );
