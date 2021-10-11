@@ -1,5 +1,24 @@
 import React, {Component} from "react";
 import axios from "axios";
+import styled from "styled-components";
+
+
+const CreatesongFormDiv = styled.div`
+  background-color: aqua;
+
+  label{
+    display: table-cell;
+    text-align: right;
+  }
+  input {
+    display: table-cell;
+  }
+  div.row{
+    display:table-row;
+  }
+  
+
+`;
 
 export class CreateSongForm extends Component {
   constructor(props) {
@@ -41,21 +60,24 @@ export class CreateSongForm extends Component {
 
   render(){
     return(
-      <div>
-        <form action="" onSubmit={this.handleSubmit}>
-          <label htmlFor="">Title</label>
-          <input name="title" onChange={this.handleChange} type="text"/><br/>
-          <label htmlFor="">artist</label>
-          <input name="artist" onChange={this.handleChange} type="text"/><br/>
-          <label htmlFor="">album</label>
-          <input name="album" onChange={this.handleChange} type="text"/><br/>
-          <label htmlFor="">genre</label>
-          <input name="genre" onChange={this.handleChange} type="text"/><br/>
-          <label htmlFor="">release date</label>
-          <input name="release_date" onChange={this.handleChange} type="text"/><br/>
-          <button type="submit">Create Song</button>
-        </form>
-      </div>
+      <CreatesongFormDiv>
+        <div>
+          <form action="" onSubmit={this.handleSubmit}>
+            <label htmlFor="">Artist</label>
+            <input name="artist" onChange={this.handleChange} type="text"/><br/>
+            <label htmlFor="">title</label>
+            <input name="title" onChange={this.handleChange} type="text"/><br/>
+            <label htmlFor="">album</label>
+            <input name="album" onChange={this.handleChange} type="text"/><br/>
+            <label htmlFor="">genre</label>
+            <input name="genre" onChange={this.handleChange} type="text"/><br/>
+            <label htmlFor="">release date</label>
+            <input name="release_date" onChange={this.handleChange} type="text"/><br/><br/>
+            <button type="submit">Create Song</button>
+          </form>
+        </div>
+      </CreatesongFormDiv>
+
     );
   }
 }
