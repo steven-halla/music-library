@@ -1,5 +1,9 @@
-import React from "react";
 import styled from "styled-components";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import SendIcon from '@mui/icons-material/Send';
+import Stack from '@mui/material/Stack';
 
 
 const SongViewDiv = styled.div`
@@ -46,7 +50,7 @@ export const SongView = (props) => {
                 <td>{song.genre}</td>
                 <td>{song.release_date}</td>
                 <td>
-                  <button onClick={() => props.deleteSongFromDB(song.id)}>delete</button>
+                  <Button variant="contained" startIcon={<DeleteIcon />} onClick={() => props.deleteSongFromDB(song.id)}>delete</Button>
                 </td>
               </tr>
             )

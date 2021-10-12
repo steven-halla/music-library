@@ -99,7 +99,7 @@ export class App extends Component {
     return (
       <div>
         <h1>Song Search</h1>
-        <p>Search by Release Date needs to match DataBase</p>
+        <p>Search by Release Date & Release Date Input needs to match datetime i.e. 2013-11-06T20:01:15Z </p>
         <SearchBar searchSong={this.searchSong}/>
         <br/>
         <SongView songList={this.state.filteredSongs} deleteSongFromDB={this.songDelete}/>
