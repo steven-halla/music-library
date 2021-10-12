@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {TextField} from "@mui/material";
 
 export class SearchBar extends Component {
   constructor(props) {
@@ -38,13 +39,14 @@ export class SearchBar extends Component {
           method="get"
           // onSubmit={this.handleSubmit}
         >
-          <input
+          <TextField
+            label="Search" color="secondary" focused
             type="text"
-            placeholder="Search"
             value={this.props.searchQuery}
             onChange={this.handleSearchQueryOnChanged}
 
           />
+
           {/*<button type="submit">Search</button>*/}
         </form>
       </div>

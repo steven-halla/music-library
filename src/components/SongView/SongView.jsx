@@ -25,6 +25,7 @@ const SongViewDiv = styled.div`
 `;
 
 
+
 export const SongView = (props) => {
   return (
     <SongViewDiv>
@@ -37,7 +38,7 @@ export const SongView = (props) => {
             <th>album</th>
             <th>genre</th>
             <th>release date</th>
-            <th>action</th>
+            <th>Delete</th>
           </tr>
           </thead>
           <tbody>

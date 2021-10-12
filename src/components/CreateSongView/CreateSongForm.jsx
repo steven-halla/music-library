@@ -6,12 +6,6 @@ import {Grid, TextField} from "@mui/material";
 
 
 const CreatesongFormDiv = styled.div`
-
-    
- Grid {
-   padding-left: 10px;
- }
-  
   
   label{
     display: table-cell;
@@ -70,7 +64,7 @@ export class CreateSongForm extends Component {
   render(){
     return(
       <CreatesongFormDiv>
-        <Grid container justifyContent="flex-end">
+        <Grid >
           <form action="" onSubmit={this.handleSubmit}>
             <label htmlFor=""> </label>
             <TextField id="filled-basic" label="Artist" variant="filled" name="artist" onChange={this.handleChange} type="text"/><br/>
