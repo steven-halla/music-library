@@ -3,6 +3,7 @@ import axios from "axios";
 import {SongView} from "./components/SongView/SongView";
 import {CreateSongForm} from "./components/CreateSongView/CreateSongForm";
 import {SearchBar} from "./components/SearchBar/SearchBar";
+import {UpdateSongForm} from "./components/UpdateSongForm/UpdateSongForm";
 
 
 export class App extends Component {
@@ -21,7 +22,7 @@ export class App extends Component {
 
   async fetchSongs() {
     try {
-      let response = await axios.get("http://127.0.0.1:8000/music/");
+      const response = await axios.get("http://127.0.0.1:8000/music/");
       console.log(response.data)
       this.setState({
         songs: response.data,
@@ -44,14 +45,43 @@ export class App extends Component {
     }
   }
 
-  createSong = async () => {
-    console.log("attempting to create song")
-    try {
-      await axios.post('http://127.0.0.1:8000/music/');
-      await this.fetchSongs()
+  // createSong = async () => {
+  //   console.log("attempting to create song")
+  //   try {
+  //     const newSongResponse = await axios.post('http://127.0.0.1:8000/music/');
+  //     const newSong = newSongResponse.data;
+  //     alert(JSON.stringify(newSong));
+  //     console.log("new song: " + newSong);
+  //     const newSongs = this.state.songs.concat([newSong]);
+  //     //console.log(newSongs);
+  //     this.setState({
+  //       songs: newSongs,
+  //       filteredSongs: newSongs
+  //     });
+  //     //await this.fetchSongs();
+  //
+  //   } catch (ex) {
+  //     console.log("error in create call", ex);
+  //   }
+  // }
 
-    } catch (ex) {
-      console.log("error in create call", ex);
+  createSongCallback = (newSong) => {
+    console.log("new song: ", newSong);
+    const newSongs = this.state.songs.concat([newSong]);
+    //console.log(newSongs);
+    this.setState({
+      songs: newSongs,
+      filteredSongs: newSongs
+    });
+  }
+
+  updateSong = async () => {
+    console.log("trying to update song")
+    try{
+      await axios.put("http://127.0.0.1:8000/music/");
+      await this.fetchSongs()
+    }catch (ex) {
+      console.log("error in update call", ex)
     }
   }
 
@@ -104,7 +134,8 @@ export class App extends Component {
         <br/>
         <SongView songList={this.state.filteredSongs} deleteSongFromDB={this.songDelete}/>
         <br/>
-        <CreateSongForm createNewSong={this.createSong}/>
+        <CreateSongForm createSongCallback={this.createSongCallback}/>
+        {/*<UpdateSongForm updateCurrentSong={this.updateSong}/>*/}
       </div>
     );
   }

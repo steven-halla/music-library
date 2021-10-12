@@ -5,21 +5,23 @@ import Button from '@mui/material/Button';
 import {Grid, TextField} from "@mui/material";
 
 
-const CreatesongFormDiv = styled.div`
-  
-  label{
+const CreateSongFormDiv = styled.div`
+
+  label {
     display: table-cell;
     justify-content: flex-end;
   }
+
   input {
     display: table-cell;
 
   }
-  div.row{
-    display:table-row;
+
+  div.row {
+    display: table-row;
 
   }
-  
+
 
 `;
 
@@ -43,43 +45,66 @@ export class CreateSongForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     const song = {
       title: this.state.title,
       artist: this.state.artist,
       album: this.state.album,
       genre: this.state.genre,
-      release_date: this.state.release_date,
-
-
+      release_date: this.state.release_date
     };
     axios
       .post('http://127.0.0.1:8000/music/', song)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(response => {
+        console.log(response);
+        this.clearState();
+        this.props.createSongCallback(response.data);
+        return response;
+      })
+      .catch(error => console.log(error));
   };
 
+  clearState = () => {
+    this.setState({
+      title: '',
+      artist: '',
+      album: '',
+      genre: '',
+      release_date: '',
+    });
+  }
 
 
-
-  render(){
-    return(
-      <CreatesongFormDiv>
-        <Grid >
+  render() {
+    return (
+      <CreateSongFormDiv>
+        <Grid>
           <form action="" onSubmit={this.handleSubmit}>
             <label htmlFor=""> </label>
-            <TextField id="filled-basic" label="Artist" variant="filled" name="artist" onChange={this.handleChange} type="text"/><br/>
+            <TextField id="filled-basic" label="Artist" variant="filled"
+                       name="artist" onChange={this.handleChange} value={this.state.artist} type="text"/><br/>
             <label htmlFor=""> </label>
-            <TextField id="filled-basic" label="Title" variant="filled" name="title" onChange={this.handleChange} type="text"/><br/>
+            <TextField id="filled-basic" label="Title" variant="filled"
+                       name="title" onChange={this.handleChange} value={this.state.title} type="text"/><br/>
             <label htmlFor=""> </label>
-            <TextField id="filled-basic" label="Album" variant="filled" name="album" onChange={this.handleChange} type="text"/><br/>
+            <TextField id="filled-basic" label="Album" variant="filled"
+                       name="album" onChange={this.handleChange} value={this.state.album} type="text"/><br/>
             <label htmlFor=""> </label>
-            <TextField id="filled-basic" label="Genre" variant="filled" name="genre" onChange={this.handleChange} type="text"/><br/>
+            <TextField id="filled-basic" label="Genre" variant="filled"
+                       name="genre" onChange={this.handleChange} value={this.state.genre} type="text"/><br/>
             <label htmlFor=""> </label>
-            <TextField id="filled-basic" label="Release Date" variant="filled" name="release_date" onChange={this.handleChange} type="text"/><br/><br/>
-            <Button variant="contained" type="submit">Create Song</Button>
+            <TextField id="filled-basic" label="Release Date" variant="filled"
+                       name="release_date" onChange={this.handleChange} value={this.state.release_date}
+                       type="text"/><br/><br/>
+            <Button variant="contained"
+                    type="submit"
+              // onClick={() => this.props.createNewSong}
+            >
+              Create New song
+            </Button>
           </form>
         </Grid>
-      </CreatesongFormDiv>
+      </CreateSongFormDiv>
 
     );
   }
