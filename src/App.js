@@ -128,13 +128,14 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <h1>Song Search</h1>
-        <p>Search by Release Date & Release Date Input needs to match datetime i.e. 2013-11-06T20:01:15Z </p>
+
+        <CreateSongForm createSongCallback={this.createSongCallback}/>
         <SearchBar searchSong={this.searchSong}/>
+
         <br/>
+
         <SongView songList={this.state.filteredSongs} deleteSongFromDB={this.songDelete}/>
         <br/>
-        <CreateSongForm createSongCallback={this.createSongCallback}/>
         {/*<UpdateSongForm updateCurrentSong={this.updateSong}/>*/}
       </div>
     );

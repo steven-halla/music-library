@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const SongViewDiv = styled.div`
   table {
+    padding-left: 10px;
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;

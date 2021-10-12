@@ -1,5 +1,11 @@
 import React, {Component} from "react";
 import {TextField} from "@mui/material";
+import styled from "styled-components";
+
+
+const SearchBarDiv = styled.div`
+  width: 14%;
+`
 
 export class SearchBar extends Component {
   constructor(props) {
@@ -33,23 +39,29 @@ export class SearchBar extends Component {
     //   return Object.keys(song).some(key => song[key].toLowerCase().includes(filter.toLowerCase()))
     // });
     return (
-      <div>
-        <form
-          action=""
-          method="get"
-          // onSubmit={this.handleSubmit}
-        >
-          <TextField
-            label="Search" color="secondary" focused
-            type="text"
-            value={this.props.searchQuery}
-            onChange={this.handleSearchQueryOnChanged}
+      <SearchBarDiv>
 
-          />
+        <div>
+          <h1>Song Search</h1>
 
-          {/*<button type="submit">Search</button>*/}
-        </form>
-      </div>
+          <form
+            action=""
+            method="get"
+            // onSubmit={this.handleSubmit}
+          >
+            <TextField
+              label="Search" color="secondary" focused
+              type="text"
+              value={this.props.searchQuery}
+              onChange={this.handleSearchQueryOnChanged}
+
+            />
+
+            {/*<button type="submit">Search</button>*/}
+          </form>
+        </div>
+      </SearchBarDiv>
+
     )
   }
 }

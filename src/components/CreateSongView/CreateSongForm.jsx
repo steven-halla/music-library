@@ -2,14 +2,24 @@ import React, {Component} from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Button from '@mui/material/Button';
-import {Grid, TextField} from "@mui/material";
+import {Grid, TextField } from "@mui/material";
 
 
 const CreateSongFormDiv = styled.div`
 
+  width: 49%;
+
+  Grid {
+    width: 22%;
+    justify-content: center;
+
+  }
+
   label {
     display: table-cell;
     justify-content: flex-end;
+    margin-left: 40px;
+
   }
 
   input {
@@ -78,7 +88,13 @@ export class CreateSongForm extends Component {
   render() {
     return (
       <CreateSongFormDiv>
-        <Grid>
+        <Grid
+              display="flex"
+              spacing={2}
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+        >
           <form action="" onSubmit={this.handleSubmit}>
             <label htmlFor=""> </label>
             <TextField id="filled-basic" label="Artist" variant="filled"
@@ -93,9 +109,9 @@ export class CreateSongForm extends Component {
             <TextField id="filled-basic" label="Genre" variant="filled"
                        name="genre" onChange={this.handleChange} value={this.state.genre} type="text"/><br/>
             <label htmlFor=""> </label>
-            <TextField id="filled-basic" label="Release Date" variant="filled"
+            <TextField id="filled-basic" variant="filled"
                        name="release_date" onChange={this.handleChange} value={this.state.release_date}
-                       type="text"/><br/><br/>
+                       type="date"/><br/><br/>
             <Button variant="contained"
                     type="submit"
               // onClick={() => this.props.createNewSong}
